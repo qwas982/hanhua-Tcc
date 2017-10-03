@@ -1,7 +1,51 @@
 Tiny C Compiler - C Scripting Everywhere - The Smallest ANSI C compiler
 -----------------------------------------------------------------------
+极小 C 编译器 - C 可以用在每个地方的脚本 - 最小的 ANSI C 编译器
+-----------------------------------------------------------------------
 
-Features:
+中文汉化说明；
+  本说明是插入在官方‘读我’“README”文本文件中，不再另起一个中文‘读我’“README”文件。
+  本汉化是基于（【swizl_小李摧花】https://github.com/swizl/tinycc_cn ）
+  对 TCC 官方源代码汉化了的基础上的再度汉化，许可证沿用GNU LGPL。
+  汉化的方式和方法均模仿【swizl_小李摧花】修改官方源代码的模式，
+  并在此基础上对汉化的字符（包括关键字/保留字 函数名 变量/常量名 除开无法汉化的英文缩写外的其他字符 ）
+  进行增量汉化，追加更多的汉化，包括预处理器关键字，
+  目标是做到能在全中文的环境下编写C语言源代码，和利用可兼容英文C源代码的编译器编译，
+  期望打破易语言、习语言等中文编程语言的非开源垄断方向。
+  给向往用中文编程、汉语编程的朋友创造一个开源自由的环境和基础。
+  你可以自由更改汉化后的代码，但，请遵守本汉化执行的 GNU LGPL 许可证开源协议。
+  
+  使用说明；
+   对于初学者来说，请准备好编译的环境，不管是windows平台还是linux平台，
+   都需要足够的条件链和工具链，否则无法编译。windows平台需要更多的准备工作，
+   比如模拟GNU软件运行环境的基础，你可以用cygwin或msys2，然后打开模拟终端安装make、git、texinfo等软件。
+   linux平台可能已经具备了原生GNU环境，所以不需要安装cygwin或msys2，
+   但编译所需软件（如make、git、texinfo等）要检查是否已安装。
+   windows平台除了要注意win自身的环境变量，还要注意cygwin或msys2的模拟GNU软件环境的环境变量。
+   在 /etc/profile 中在最后添加 export PATH="$PATH:你的路径" 安装目录就是 / 根目录。
+   如果提示找不到命令，一定要检查环境变量是否已设置好。
+   编译的步骤请看下面英文说明，方法相同。
+   
+   如果你是大牛老鸟，请忽略此提示。
+   
+  修改说明；
+   本修改汉化所用编码全部为UTF-8.在notepad++上修改。
+   tcc可以根据不同的操作系统平台和硬件平台自动生成相关平台的机器码可执行文件。
+   所以直接在你使用的平台上编译即可，如果是交叉编译就需要在编译的时候加命令，请看说明文档。
+   本汉化也可实现自举，
+   具体说明请看【swizl_小李摧花】https://github.com/swizl/tinycc_cn 的 tinycc_cn-tinycc-cn 中的‘读我’“README”文件。
+   必须要在英文源代码的基础上先修改一版，在这个基础上才能自举新汉化的后续版本。
+   当然，你也可以在我们修改过的汉化版本上继续修改和编译。
+   首版修改涉及了以下文件；
+  【examples/_ex3.c】  【tccasm.c】  【tccgen.c】  【tccpp.c】  【tcctok.h】
+   有了以上基础，你将可以在第二版或后续版本的基础上进行更多的汉化修改。
+   修改的方法基本是通过添加能解析中文字符的代码为主。只有很少需要全新添加的代码，
+   如有困惑的疑问，请咨询 【swizl_小李摧花】 或者加入 https://github.com/program-in-chinese/overview 中文编程讨论组。
+   C语言每个字符都有特定的意义，即便是逗号‘，’句号‘。’都是运算符，你必须一寸一寸地理解它的每个字符，
+   然后再连起来理解一条语句的意思。
+   它不像其它高级语言那样直白甚至可以模糊理解，这既是它的优势也是它的劣势。
+  
+Features: 特征
 --------
 
 - SMALL! You can compile and execute C code everywhere, for example on
@@ -25,11 +69,13 @@ Features:
   line of your C source, and execute it directly from the command
   line.
 
-Documentation:
+Documentation: 文档
 -------------
 
 1) Installation on a i386/x86_64/arm Linux/OSX/FreeBSD host
-
+   安装在 i386 / x86_64 / arm Linux / OSX / FreeBSD 主机上
+   编译和安装的命令
+   
    ./configure
    make
    make test
@@ -43,7 +89,7 @@ installed in /usr/local/bin.  ./configure --help  shows configuration
 options.
 
 
-2) Introduction
+2) Introduction 介绍
 
 We assume here that you know ANSI C. Look at the example ex1.c to know
 what the programs look like.
@@ -58,7 +104,7 @@ launch the C code as a shell or perl script :-) The command line
 arguments are put in 'argc' and 'argv' of the main functions, as in
 ANSI C.
 
-3) Examples
+3) Examples 例子
 
 ex1.c: simplest example (hello world). Can also be launched directly
 as a script: './ex1.c'.
@@ -80,13 +126,14 @@ generator.
 tcctest.c: auto test for TCC which tests many subtle possible bugs. Used
 when doing 'make test'.
 
-4) Full Documentation
+4) Full Documentation 完整文档
+   有TCC的官方使用说明书
 
 Please read tcc-doc.html to have all the features of TCC.
 
 Additional information is available for the Windows port in tcc-win32.txt.
 
-License:
+License: 许可证
 -------
 
 TCC is distributed under the GNU Lesser General Public License (see
